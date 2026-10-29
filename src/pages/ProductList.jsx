@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./ProductList.module.css";
+import { Link } from "react-router";
 
 function ProductList() {
     const [list, setList] = useState([]);
@@ -22,34 +23,30 @@ function ProductList() {
         return <div>데이터를 로드 중입니다...</div>;
     }
 
+    const renderedCards = list.map(item => (
+        <div key={item.id} className={styles.cards}>
+            <Link to={`/products/${item.id}`} className={styles.cardLink}>
+                <div className={styles.itemCategory}>{item.category}</div>
+                <div className={styles.itemTitle}>{item.title}</div>
+                <div className={styles.itemPrice}>${item.price}</div>
+            </Link>
+        </div>
+    ));
+
     return (
-        <>
-            <div className={styles.container}>
-                <div className={styles.header}>
-                    <div className={styles.logo}> BEAUTY </div>
-                    <div className={styles.sign}>
-                        <div>로그인</div>
-                        <div>회원가입</div>
-                        <div>KOR</div>
-                    </div>
-                </div>
-                <div className={styles.photoZone}>사진이 들어갈 곳</div>
-                <div className={styles.cardZone}>
-                    <div className={styles.cards}>1</div>
-                    <div className={styles.cards}>2</div>
-                    <div className={styles.cards}>3</div>
-                    <div className={styles.cards}>4</div>
-                    <div className={styles.cards}>5</div>
-                    <div className={styles.cards}>6</div>
-                    <div className={styles.cards}>1</div>
-                    <div className={styles.cards}>2</div>
-                    <div className={styles.cards}>3</div>
-                    <div className={styles.cards}>4</div>
-                    <div className={styles.cards}>5</div>
-                    <div className={styles.cards}>6</div>
+        <div className={styles.container}>
+            <div className={styles.header}>
+                <div className={styles.logo}> BEAUTY </div>
+                <div className={styles.sign}>
+                    <div>로그인</div>
+                    <div>회원가입</div>
+                    <div>KOR</div>
                 </div>
             </div>
-        </>
+
+            <div className={styles.photoZone}>사진이 들어갈 곳</div>
+            <div className={styles.cardZone}>{renderedCards}</div>
+        </div>
     );
 }
 
