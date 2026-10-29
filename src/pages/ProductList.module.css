@@ -1,3 +1,5 @@
+
+
 .container {
     display: flex;
     width: 100%;
@@ -8,6 +10,7 @@
 }
 
 .header {
+    z-index: 2;
     width: 100%;
     height: 8dvh;
     display: flex;
@@ -59,11 +62,34 @@
 
 .photoZone {
     display: flex;
+    position: relative;
+    flex-direction: column;
     width: 100%;
     height: 70dvh;
-    background-color: tomato;
     color: white;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* 기차 역할: 6장의 사진을 가로로 묶고 부드럽게 이동 */
+.sliderTrack {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+    z-index: 1;
+}
+
+/* 각각의 슬라이드 칸 */
+.slideItem {
+    flex-shrink: 0; /* 폭이 줄어들지 않도록 고정 */
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .cardZone {
@@ -102,7 +128,7 @@
     flex-direction: column;
     min-width: 0;
     padding: 15px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.25) 0%, transparent 35%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.1) 0%, transparent 35%);
     color: #666;
 }
 
@@ -128,4 +154,75 @@
     font-size: 0.75rem;
     font-weight: 400;
     width: 100%;
+}
+
+.photoZoneUi {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none; /* 사진 영역 클릭 방해 금지 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+.pzButton {
+    position: absolute;
+    top: 8dvh;                  /* 헤더(8dvh) 바로 아래부터 시작 */
+    height: calc(100% - 8dvh);  /* 헤더 영역을 뺀 나머지 높이만 차지 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+    border: none;
+    z-index: 2;                 /* 헤더(z-index: 2)와 충돌 시 확실하게 배치 */
+}
+
+.pzButton:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.ButtonLeft {
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
+}
+
+.ButtonRight {
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
+}
+
+.dotGroup {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    pointer-events: auto;
+}
+.dot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.activeDot {
+    background-color: #ffffff;
+    width: 28px;
+    border-radius: 10px;
+}
+
+.pzButton,
+.dotGroup {
+    pointer-events: auto;
 }
