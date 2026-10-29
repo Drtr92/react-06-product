@@ -5,6 +5,7 @@ import { Link } from "react-router";
 function ProductList() {
     const [list, setList] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [scapeNumber, setscapeNumber] = useState(0);
 
     useEffect(() => {
         fetch("https://dummyjson.com/products?limit=12")
@@ -24,7 +25,10 @@ function ProductList() {
     }
 
     const renderedCards = list.map(item => (
-        <div key={item.id} className={styles.cards}>
+        <div
+            key={item.id}
+            className={styles.cards}
+            style={{ backgroundImage: `url("${item.thumbnail}")` }}>
             <Link to={`/products/${item.id}`} className={styles.cardLink}>
                 <div className={styles.itemCategory}>{item.category}</div>
                 <div className={styles.itemTitle}>{item.title}</div>
@@ -33,18 +37,23 @@ function ProductList() {
         </div>
     ));
 
+    const BANNER_IMAGES = []
+
     return (
         <div className={styles.container}>
-            <div className={styles.header}>
-                <div className={styles.logo}> BEAUTY </div>
-                <div className={styles.sign}>
-                    <div>로그인</div>
-                    <div>회원가입</div>
-                    <div>KOR</div>
+            <div className={styles.photoZone}>
+                <div className={styles.header}>
+                    <div className={styles.logo}> BEAUTY </div>
+                    <div className={styles.sign}>
+                        <div className={styles.signButton}>로그인</div>
+                        <div className={styles.signButton}>회원가입</div>
+                        <div className={styles.signButton}>KOR</div>
+                    </div>
                 </div>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
-
-            <div className={styles.photoZone}>사진이 들어갈 곳</div>
             <div className={styles.cardZone}>{renderedCards}</div>
         </div>
     );

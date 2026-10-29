@@ -4,28 +4,35 @@
     height: 100%;
     background-color: white;
     flex-direction: column;
+    align-items: center;
 }
 
 .header {
     width: 100%;
-    height: 12dvh;
+    height: 8dvh;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     background-color: rgba(0, 0, 0, 12%);
-    padding: 20px;
+    padding: 0 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .logo {
     margin-left: 20px;
     display: flex;
-    font-size: 2rem;
+    font-size: 1.3rem;
     font-weight: bold;
     letter-spacing: 12px;
     transform: scaleX(1.1);
     color: white;
+    transition: color 0.3s;
 
+}
+
+.logo:hover {
+    color: rgba(0, 0, 0, 0.35);
 }
 
 .sign {
@@ -35,19 +42,28 @@
     align-items: center;
     gap: 25px;
     margin-right: 10px;
+    font-size: 0.75rem;
     font-weight: 400;
     letter-spacing: 2px;
-    color: #666;
+    color: white;
+}
+
+.signButton {
+    transition: color 0.3s, transform 0.3s;
+}
+
+.signButton:hover {
+    color: rgba(0, 0, 0, 0.35);
+    transform: scale(1.1);
 }
 
 .photoZone {
     display: flex;
     width: 100%;
-    height: 500px;
-    justify-content: center;
-    align-items: center;
+    height: 70dvh;
     background-color: tomato;
     color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .cardZone {
@@ -55,17 +71,27 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    width: 55%;
 }
 
 .cards {
     display: flex;
     flex-direction: column;
     min-width: 0;
-    width: calc(100% / 6);
-    height: 500px;
-    background-color: orange;
+    width: calc(100% / 4);
+    height: 400px;
     align-items: center;
     justify-content: end;
+    background-repeat: no-repeat;
+    background-size: auto 60%;
+    background-position: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.cards:hover {
+    transform: scale(1.0075);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .cardLink {
@@ -74,21 +100,32 @@
     height: 100%;
     justify-content: end;
     flex-direction: column;
-    color: #464646;
     min-width: 0;
     padding: 15px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.25) 0%, transparent 35%);
+    color: #666;
 }
 
-.itemCategory {}
+.itemCategory {
+    font-size: 0.75rem;
+    font-weight: 400;
+    width: 100%;
+}
 
 .itemTitle {
-    display: flex;
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     font-weight: 600;
     margin: 10px 0;
-    line-height: 1.4;
+    line-height: 1.3;
     width: 100%;
     height: 50px;
 }
 
-.itemPrice {}
+.itemPrice {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    font-size: 0.75rem;
+    font-weight: 400;
+    width: 100%;
+}
