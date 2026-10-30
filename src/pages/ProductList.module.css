@@ -92,7 +92,7 @@
 .cardZone {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     width: 55%;
 }
@@ -202,7 +202,6 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    pointer-events: auto;
 }
 .dot {
     display: flex;
@@ -212,13 +211,22 @@
     height: 10px;
     border-radius: 50%;
     border: none;
+    background-color: white;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .activeDot {
-    background-color: #ffffff;
     width: 28px;
     border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot:hover,
+.activeDot,
+.activeDot:hover {
+    background-color: rgb(150 150 150);
 }
 
 .pzButton,
