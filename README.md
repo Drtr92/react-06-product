@@ -23,10 +23,10 @@
 (우리가 원하는 페이지를 어떠한 주소로 매칭시킬 것인가)
 
 목록페이지
-- "/" : (사이트의 최상단 경로) <ProductList />
+- "/" : (사이트의 최상단 경로) <= <ProductList />
 
 상품 상세 페이지
-- "/product/:id" => <ProductDetail />
+- "/product/:id" <= <ProductDetail />
 
 
 {/*
