@@ -22,6 +22,13 @@ function ProductDetail() {
     }, [id]);
 
     if (loading) return <div>Loading...</div>;
+    const tagMaker = list.tags.map((tag, index) => {
+        return (
+            <div key={index} className={styles.tags}>
+                # {tag}
+            </div>
+        );
+    });
 
     return (
         <div className={styles.container}>
@@ -41,12 +48,13 @@ function ProductDetail() {
                 })}
             </div>
             <div className={styles.main}>
+                <div className={styles.ProductCategory}>
+                    <div className={styles.productCopy}>{list.category}</div>·
+                    <div className={styles.productCopy}>{list.brand}</div>
+                </div>
+                <div className={styles.ProductName}>{list.title}</div>
                 <div>
-                    <div className={styles.ProductCategory}>
-                        <div className={styles.productCopy}>{list.category}</div>·
-                        <div className={styles.productCopy}>{list.brand}</div>
-                    </div>
-                    <div className={styles.ProductName}>{list.title}</div>
+                    {tagMaker}
                 </div>
             </div>
         </div>

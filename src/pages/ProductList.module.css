@@ -94,7 +94,7 @@
     flex-wrap: wrap;
     align-items: start;
     justify-content: center;
-    width: 55%;
+    width: 45%;
 }
 
 .cards {
@@ -127,7 +127,7 @@
     flex-direction: column;
     min-width: 0;
     padding: 15px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.1) 0%, transparent 35%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.05) 0%, transparent 35%);
     color: #666;
 }
 
