@@ -33,6 +33,10 @@ function ProductList() {
         return <div>데이터를 로드 중입니다...</div>;
     }
 
+    if (list.length === 0) {
+        return <div>상품을 찾을 수 없거나, 오류가 발생 되었습니다.</div>;
+    }
+
     const renderedCards = list.map(item => (
         <div
             key={item.id}
