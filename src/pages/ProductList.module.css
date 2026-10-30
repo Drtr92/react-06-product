@@ -104,7 +104,7 @@
     width: calc(100% / 4);
     height: 400px;
     align-items: center;
-    justify-content: end;
+    justify-content: start;
     background-repeat: no-repeat;
     background-size: auto 60%;
     background-position: center;
